@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mic Taskbar Widget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="widget" data-state="connecting" aria-live="polite" title="Click to re-check your microphone">
+      <span class="grip" aria-hidden="true"></span>
+      <div class="signal" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="copy">
+        <strong data-status>Checking mic</strong>
+        <span data-detail>Waiting for microphone access</span>
+        <select data-device aria-label="Microphone device" hidden></select>
+      </div>
+      <button data-monitor aria-label="Turn on mic monitoring" aria-pressed="false" title="Hear your microphone" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Zm12.5 2a4.5 4.5 0 0 0-2.1-3.8v7.6a4.5 4.5 0 0 0 2.1-3.8Zm0-8.2v2.1a6.5 6.5 0 0 1 0 12.2v2.1a8.5 8.5 0 0 0 0-16.4Z" /></svg>
+      </button>
+      <button data-close aria-label="Quit microphone widget" title="Quit">×</button>
+    </main>
+    <script src="renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "mic-taskbar-widget",
+  "version": "1.0.0",
+  "description": "A small Windows taskbar widget that shows when your microphone hears you.",
+  "author": "Harvest",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check main.js && node --check preload.js && node --check renderer.js",
+    "package": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.harvest.mictaskbarwidget",
+    "productName": "Mic Taskbar Widget",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false
+    }
+  }
+}

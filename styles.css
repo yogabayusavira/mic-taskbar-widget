@@ -1,0 +1,43 @@
+:root { color-scheme: dark; font-family: "Segoe UI Variable", "Segoe UI", sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow: hidden; background: transparent; }
+body { height: 56px; padding: 0; }
+.widget {
+  --ink: #ffffff;
+  --muted: #c5c5c5;
+  --signal: #6b6b6b;
+  width: 266px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 11px 0 14px;
+  border-radius: 12px;
+  color: var(--ink);
+  background: rgba(32,32,32,.88); /* dark tint over the Windows blur, matched to the Win10 dark taskbar (~29 over black) */
+  cursor: pointer;
+  user-select: none;
+  -webkit-app-region: drag;
+  transition: background 180ms ease, color 180ms ease;
+}
+.widget:hover { background: rgba(52,52,52,.9); }
+.grip { width: 3px; height: 22px; border-radius: 99px; background: rgba(255,255,255,.12); }
+.signal { width: 27px; height: 29px; display: flex; align-items: center; justify-content: center; gap: 3px; }
+.signal i { display: block; width: 4px; height: 8px; border-radius: 99px; background: var(--signal); transition: height 70ms cubic-bezier(.2,.8,.3,1), background 140ms ease; }
+.signal i:nth-child(2) { height: 15px; }
+.signal i:nth-child(3) { height: 10px; }
+.copy { min-width: 0; display: grid; gap: 2px; flex: 1; }
+.copy strong { font-size: 12px; font-weight: 650; letter-spacing: .01em; }
+.copy span { color: var(--muted); font-size: 12px; line-height: 1.2; white-space: nowrap; }
+.copy select { min-width: 0; max-width: 146px; height: 20px; padding: 0 18px 0 6px; border: 0; border-radius: 4px; color: #fff; background: rgba(255,255,255,.08); font: 11px/18px "Segoe UI Variable", "Segoe UI", sans-serif; cursor: pointer; text-overflow: ellipsis; -webkit-app-region: no-drag; }
+.copy select option { color: #fff; background: #1f1f1f; }
+.copy select:focus { outline: 1px solid #aebdcb; outline-offset: 2px; }
+button { width: 22px; height: 22px; border: 0; border-radius: 50%; color: #9a9a9a; background: transparent; font: 20px/18px "Segoe UI", sans-serif; cursor: pointer; -webkit-app-region: no-drag; }
+button:hover, button:focus-visible { color: #f1f5f9; background: rgba(255,255,255,.12); outline: none; }
+button:disabled { cursor: default; opacity: .38; }
+button[data-monitor] svg { display: block; width: 16px; height: 16px; margin: auto; fill: currentColor; }
+button[data-monitor][aria-pressed="true"] { color: #39df89; background: rgba(57,223,137,.15); }
+.widget[data-state="heard"] { --signal: #3ee58f; }
+.widget[data-state="connecting"] { --signal: #e7b85e; }
+.widget[data-state="error"] { --signal: #ee7777; --muted: #d9a1a1; }
+.widget[data-state="error"] .signal i { background: #ee7777; }
