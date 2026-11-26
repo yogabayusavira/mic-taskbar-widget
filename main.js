@@ -93,8 +93,8 @@ function createWidget() {
 if (!app.requestSingleInstanceLock()) app.quit();
 
 app.whenReady().then(() => {
-  // This takes effect after the packaged app is installed; development launches stay manual.
-  app.setLoginItemSettings({ openAtLogin: true, openAsHidden: false });
+  // Only the packaged app registers itself; dev runs would register bare electron.exe.
+  if (app.isPackaged) app.setLoginItemSettings({ openAtLogin: true, openAsHidden: false });
   session.defaultSession.setPermissionRequestHandler((_webContents, permission, callback) => {
     callback(permission === 'media');
   });
